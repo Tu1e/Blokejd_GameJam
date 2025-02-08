@@ -20,5 +20,6 @@ public abstract class Traps : MonoBehaviour
 
 public enum TrapActions{
     Kill,
-    DontKill
+    ReduceMoves,
+    DoNothing
 }
