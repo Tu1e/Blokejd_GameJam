@@ -6,7 +6,6 @@ using Unity.Collections;
 using Unity.Mathematics;
 
 using static Unity.Mathematics.math;
-using Palmmedia.ReportGenerator.Core.Parser.Analysis;
 
 public struct GridVisualization{
     static int positionsId = Shader.PropertyToID("_Positions"), 
@@ -35,6 +34,12 @@ public struct GridVisualization{
         colorsBuffer = new ComputeBuffer(instanceCount, 3 * 4);
         material.SetBuffer(positionsId, positionsBuffer);
         material.SetBuffer(colorsId, colorsBuffer);
+
+        new InitializeVisualizationJob{
+            positions = positions, colors = colors, rows = manager.Rows, columns = manager.Columns
+        }.ScheduleParallel(manager.CellCount, manager.Columns, default).Complete();
+        positionsBuffer.SetData(positions);
+        colorsBuffer.SetData(colors);
     }
 
     public void Dispose(){

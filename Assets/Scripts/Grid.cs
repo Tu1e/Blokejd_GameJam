@@ -14,16 +14,13 @@ public class Grid : MonoBehaviour
     Mesh mesh;
 
     GridManager manager;
-    GridVisualization visualization;
 
     void OnEnable(){
         manager.Initialize(rows, columns);
-        visualization.Initialize(manager, material, mesh);
     }
 
     void OnDisable(){
         manager.Dispose();
-        visualization.Dispose();
     }
 
     void Update(){
@@ -31,6 +28,5 @@ public class Grid : MonoBehaviour
             OnDisable();
             OnEnable();
         }
-        visualization.Draw();
     }
 }
