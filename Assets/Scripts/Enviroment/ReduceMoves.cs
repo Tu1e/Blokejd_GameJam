@@ -1,23 +1,26 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BreakableBlock : Traps
+public class ReduceMoves : Traps
 {
     [SerializeField] Animation animation;
     [SerializeField] TrapActions tapAction;
-    [SerializeField] bool isBroken;
+    public static event Action ReduceMove;
+    [SerializeField] int reduceAmount;
     private void OnTriggerEnter(Collider other) {
 
-        if(other.gameObject.CompareTag("Player") && isBroken) {
+        if(other.gameObject.CompareTag("Player")) {
             Destroy(gameObject, animation.clip.length);
             PlayAnimation(animation);
-            ActivateTrap(tapAction);
+            ReduceMNumber();
         }
 
-        if(!isBroken)
-            isBroken = true;
         
     }
 
+    void ReduceMNumber(){
+        ReduceMove?.Invoke();
+    }
 }

@@ -6,6 +6,7 @@ using UnityEngine;
 public abstract class Traps : MonoBehaviour
 {
     public static event Action KillPlayer;
+    public static event Action SendSInfo;
     public void PlayAnimation(Animation anim){
         anim.Play();
     } 
@@ -15,6 +16,10 @@ public abstract class Traps : MonoBehaviour
             KillPlayer?.Invoke();
     }
 
+    public void SendSurroundingsInfo(){
+
+        SendSInfo?.Invoke();
+    }
 
 }
 
