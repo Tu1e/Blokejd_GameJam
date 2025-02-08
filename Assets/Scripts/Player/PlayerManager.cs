@@ -50,7 +50,7 @@ public class PlayerManager : MonoBehaviour
     }
 
     void SpawnPlayer(){
-        player = Instantiate(playerPrefab, new Vector3(0f, 1f, 0f), Quaternion.identity);
+        player = Instantiate(playerPrefab, startingPos.position + new Vector3(0f, 1f, 0f), Quaternion.identity);
         playerInstance = player.GetComponent<PlayerInstance>();
         animator = playerInstance.GetComponent<Animator>();
         //rb = player.GetComponent<Rigidbody>();
