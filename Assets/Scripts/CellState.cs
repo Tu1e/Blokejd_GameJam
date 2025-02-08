@@ -4,7 +4,8 @@ using UnityEngine;
 
 [System.Flags]
 public enum CellState{
-    Pass, Trap, Obsticle, Key, Breakable
+    Forward = 1, Back = 1 << 1, Left = 1 << 2, Right = 1 << 3, 
+    Trap = 1 << 4, Breakable = 1 << 5
 }
 
 public static class CellStateExtensionMethods{

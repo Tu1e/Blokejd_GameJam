@@ -5,13 +5,21 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
+
+    public enum PlayerMoves{
+        Forward, Back, Left, Right, Nothing
+    }
+
     [SerializeField] GameObject playerPrefab;
-    [SerializeField] Rigidbody rb;
     [SerializeField] float speed;
     bool canWalk = true;
 
-    Transform startingPos;
+    [SerializeField] Transform startingPos;
     GameObject player;
+    PlayerInstance playerInstance;
+
+    PlayerMoves currentMove = PlayerMoves.Nothing;
+
     private void OnEnable() {
         Traps.KillPlayer += HandlePlayerDeath;
         //OnLevelLoaded += HandleNewlevel;
@@ -26,29 +34,28 @@ public class PlayerManager : MonoBehaviour
     }
 
     private void Update() {
-        if(Input.GetAxisRaw("Horizontal") != 0){
-            HorizontalMove();
-        }
-        else if(Input.GetAxisRaw("Vertical") != 0){
-            VerticalMove();
-        }
+        PlayerInput();
+        Move();
+        //Debug.Log(playerInstance.currentCell.cellState);
     }
 
     void SpawnPlayer(){
-        player = Instantiate(playerPrefab, startingPos.position, Quaternion.identity);
-        rb = player.GetComponent<Rigidbody>();
+        player = Instantiate(playerPrefab, new Vector3(0f, 1f, 0f), Quaternion.identity);
+        playerInstance = player.GetComponent<PlayerInstance>();
+        //rb = player.GetComponent<Rigidbody>();
 
     }
 
-    void HorizontalMove(){
-        Debug.Log("Horizontal: " + Input.GetAxisRaw("Horizontal"));
-        canWalk = false;
-        //rb.velocity = 
-    }
-
-    void VerticalMove(){
-        canWalk = false;
-        Debug.Log("Vertical: " + Input.GetAxisRaw("Vertical"));
+    void PlayerInput(){
+        if(Input.GetKeyDown(KeyCode.W)){
+            currentMove = PlayerMoves.Forward;
+        }else if(Input.GetKeyDown(KeyCode.S)){
+            currentMove = PlayerMoves.Back;
+        }else if(Input.GetKeyDown(KeyCode.A)){
+            currentMove = PlayerMoves.Left;
+        }else if(Input.GetKeyDown(KeyCode.D)){
+            currentMove = PlayerMoves.Right;
+        }
     }
     void HandlePlayerDeath(){
         canWalk = false;    
@@ -65,5 +72,23 @@ public class PlayerManager : MonoBehaviour
         //tim
         SpawnPlayer();
         //startingPos = 
+    }
+
+
+
+    void Move(){
+        Vector3 p = player.transform.localPosition;
+        if(currentMove == PlayerMoves.Forward && playerInstance.currentCell.cellState.Is(CellState.Forward)){
+            p.z += 2;
+        }else if(currentMove == PlayerMoves.Back && playerInstance.currentCell.cellState.Is(CellState.Back)){
+            p.z -= 2;
+        }else if(currentMove == PlayerMoves.Left && playerInstance.currentCell.cellState.Is(CellState.Left)){
+            p.x -= 2;
+        }else if(currentMove == PlayerMoves.Right && playerInstance.currentCell.cellState.Is(CellState.Right)){
+            p.x += 2;
+        }
+
+        currentMove = PlayerMoves.Nothing;
+        player.transform.localPosition = p;
     }
 }
