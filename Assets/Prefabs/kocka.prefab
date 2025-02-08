@@ -21,7 +21,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: c18d4904ab2f3c4e4a7a566c9ce1c1a2,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c18d4904ab2f3c4e4a7a566c9ce1c1a2,
         type: 3}
@@ -68,6 +68,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: kocka
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c18d4904ab2f3c4e4a7a566c9ce1c1a2,
+        type: 3}
+      propertyPath: m_TagString
+      value: Box
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -76,6 +81,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: -7506960295484483464}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c18d4904ab2f3c4e4a7a566c9ce1c1a2,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -2254896677718926841}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c18d4904ab2f3c4e4a7a566c9ce1c1a2,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 862697341334100126}
   m_SourcePrefab: {fileID: 100100000, guid: c18d4904ab2f3c4e4a7a566c9ce1c1a2, type: 3}
 --- !u!1 &1676229250909546669 stripped
 GameObject:
@@ -102,5 +115,45 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.02, y: 0.019999996, z: 0.019999996}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.00892283, y: 0.009705977, z: 0.025356747}
+  m_Center: {x: -0.00053857936, y: -0.00052089634, z: 0.0076783835}
+--- !u!114 &-2254896677718926841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1676229250909546669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1602a2b2c29ed57538e28a8701368cb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cellState: 15
+--- !u!54 &862697341334100126
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1676229250909546669}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
