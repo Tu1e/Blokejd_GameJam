@@ -628,7 +628,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 32101926756909804, guid: fb7908c8d13f21c598c8890d21635878,
     type: 3}
-  speed: 5
+  speed: 3
   startingPos: {fileID: 23162957}
 --- !u!4 &1235826915
 Transform:
