@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -12,13 +13,20 @@ public class PlayerManager : MonoBehaviour
 
     [SerializeField] GameObject playerPrefab;
     [SerializeField] float speed;
-    bool canWalk = true;
+    bool canMove = true;
 
     [SerializeField] Transform startingPos;
+
+    Animator animator;  
     GameObject player;
     PlayerInstance playerInstance;
 
     PlayerMoves currentMove = PlayerMoves.Nothing;
+
+    Vector3 desiredPosition;
+    Vector3 currentPosition;
+    
+    private float currentLerp = 0, targetLerp = 1;
 
     private void OnEnable() {
         Traps.KillPlayer += HandlePlayerDeath;
@@ -34,14 +42,18 @@ public class PlayerManager : MonoBehaviour
     }
 
     private void Update() {
-        PlayerInput();
-        Move();
-        //Debug.Log(playerInstance.currentCell.cellState);
+        if(canMove){
+            PlayerInput();
+            Move();
+        }else{
+            Lerping();
+        }
     }
 
     void SpawnPlayer(){
         player = Instantiate(playerPrefab, new Vector3(0f, 1f, 0f), Quaternion.identity);
         playerInstance = player.GetComponent<PlayerInstance>();
+        animator = playerInstance.GetComponent<Animator>();
         //rb = player.GetComponent<Rigidbody>();
 
     }
@@ -49,22 +61,26 @@ public class PlayerManager : MonoBehaviour
     void PlayerInput(){
         if(Input.GetKeyDown(KeyCode.W)){
             currentMove = PlayerMoves.Forward;
+            canMove = false;
         }else if(Input.GetKeyDown(KeyCode.S)){
             currentMove = PlayerMoves.Back;
+            canMove = false;
         }else if(Input.GetKeyDown(KeyCode.A)){
             currentMove = PlayerMoves.Left;
+            canMove = false;
         }else if(Input.GetKeyDown(KeyCode.D)){
             currentMove = PlayerMoves.Right;
+            canMove = false;
         }
     }
     void HandlePlayerDeath(){
-        canWalk = false;    
+        canMove = false;    
         player.GetComponent<PlayerInstance>().HandlePlayerInstanceDeath();
         SpawnPlayer();
     }
     IEnumerator Wait(float waitTime = 0.5f) {
         yield return new WaitForSeconds(waitTime);
-        canWalk = true; 
+        canMove = true; 
     }
 
     void HandleNewlevel(){
@@ -74,21 +90,43 @@ public class PlayerManager : MonoBehaviour
         //startingPos = 
     }
 
-
+    void Lerping(){
+        if(player.transform.localPosition != desiredPosition){
+            currentLerp = Mathf.MoveTowards(currentLerp, targetLerp, speed * Time.deltaTime);
+            player.transform.localPosition = Vector3.Lerp(currentPosition, desiredPosition, currentLerp);
+        }else{
+            canMove = true;
+            currentLerp = 0;
+            animator.SetBool("Idle", true);
+            animator.SetBool("Up", false);
+            animator.SetBool("Down", false);
+            animator.SetBool("Right", false);
+            animator.SetBool("Left", false);
+        }
+    }
 
     void Move(){
-        Vector3 p = player.transform.localPosition;
+        desiredPosition = currentPosition = player.transform.localPosition;
         if(currentMove == PlayerMoves.Forward && playerInstance.currentCell.cellState.Is(CellState.Forward)){
-            p.z += 2;
+            desiredPosition.z += 2;
+            player.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+            animator.SetBool("Up", true);
+            animator.SetBool("Idle", false);
         }else if(currentMove == PlayerMoves.Back && playerInstance.currentCell.cellState.Is(CellState.Back)){
-            p.z -= 2;
+            desiredPosition.z -= 2;
+            player.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+            animator.SetBool("Down", true);
+            animator.SetBool("Idle", false);
         }else if(currentMove == PlayerMoves.Left && playerInstance.currentCell.cellState.Is(CellState.Left)){
-            p.x -= 2;
+            desiredPosition.x -= 2;
+            animator.SetBool("Right", true);
+            animator.SetBool("Idle", false);
         }else if(currentMove == PlayerMoves.Right && playerInstance.currentCell.cellState.Is(CellState.Right)){
-            p.x += 2;
+            desiredPosition.x += 2;
+            animator.SetBool("Left", true);
+            animator.SetBool("Idle", false);
         }
 
         currentMove = PlayerMoves.Nothing;
-        player.transform.localPosition = p;
     }
 }
