@@ -38,25 +38,4 @@ public class Grid : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.green;
-        Vector3 startPosition = transform.position; // Početna tačka grida
-
-        // Iscrtavanje vertikalnih linija
-        for (int x = 0; x <= columns; x++)
-        {
-            Vector3 start = startPosition + new Vector3(x * cellSize, 0, 0);
-            Vector3 end = start + new Vector3(0, 0, rows * cellSize);
-            Gizmos.DrawLine(start, end);
-        }
-
-        // Iscrtavanje horizontalnih linija
-        for (int z = 0; z <= rows; z++)
-        {
-            Vector3 start = startPosition + new Vector3(0, 0, z * cellSize);
-            Vector3 end = start + new Vector3(columns * cellSize, 0, 0);
-            Gizmos.DrawLine(start, end);
-        }
-    }
 }

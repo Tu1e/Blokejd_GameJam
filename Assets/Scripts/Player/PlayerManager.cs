@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -77,10 +76,6 @@ public class PlayerManager : MonoBehaviour
         canMove = false;    
         player.GetComponent<PlayerInstance>().HandlePlayerInstanceDeath();
         SpawnPlayer();
-    }
-    IEnumerator Wait(float waitTime = 0.5f) {
-        yield return new WaitForSeconds(waitTime);
-        canMove = true; 
     }
 
     void HandleNewlevel(){

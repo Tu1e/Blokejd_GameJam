@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 [System.Flags]
 public enum CellState{
     Forward = 1, Back = 1 << 1, Left = 1 << 2, Right = 1 << 3, 
