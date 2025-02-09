@@ -5,12 +5,19 @@ using UnityEngine;
 public class BasicTrap : Traps
 {
     [SerializeField] Animation animation;
+    [SerializeField] GameObject banana;
     [SerializeField] TrapActions tapAction;
+    bool isBanana = false;
     private void OnTriggerEnter(Collider other) {
 
         if(other.gameObject.CompareTag("Player")) {
             //PlayAnimation(animation);
             ActivateTrap(tapAction);
+            if(isBanana) {
+                Instantiate(banana, transform.position + new Vector3(0,1.5f,0), Quaternion.identity);
+                isBanana = true;
+            }
+                
         }
     
         

@@ -121,4 +121,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animation: {fileID: 0}
+  banana: {fileID: 448498566589484417, guid: 0f6070491b4775e3b8689c9760a4d796, type: 3}
   tapAction: 0
