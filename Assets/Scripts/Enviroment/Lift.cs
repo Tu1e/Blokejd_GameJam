@@ -8,6 +8,8 @@ public class Lift : MonoBehaviour
     [SerializeField] TrapActions tapAction;
     [SerializeField] KeyCards keyCards;
 
+    [SerializeField] CameraPan camera;
+
 
     private void OnTriggerEnter(Collider other) {
 
@@ -21,6 +23,7 @@ public class Lift : MonoBehaviour
     void NextLvl(){
         //Larp logic
         Debug.Log("Next level");
+        camera.EndPos.y += 100f;
     }
 
     
