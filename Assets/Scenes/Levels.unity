@@ -1250,6 +1250,120 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 225886461}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &239008699
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1905608230800227952, guid: b9f31fba7d19380468a3e2eb4ca8a66e,
+        type: 3}
+      propertyPath: keyCard
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2602282515787115150, guid: b9f31fba7d19380468a3e2eb4ca8a66e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -23.06155
+      objectReference: {fileID: 0}
+    - target: {fileID: 2602282515787115150, guid: b9f31fba7d19380468a3e2eb4ca8a66e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2602282515787115150, guid: b9f31fba7d19380468a3e2eb4ca8a66e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 14.768726
+      objectReference: {fileID: 0}
+    - target: {fileID: 2602282515787115150, guid: b9f31fba7d19380468a3e2eb4ca8a66e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2602282515787115150, guid: b9f31fba7d19380468a3e2eb4ca8a66e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2602282515787115150, guid: b9f31fba7d19380468a3e2eb4ca8a66e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2602282515787115150, guid: b9f31fba7d19380468a3e2eb4ca8a66e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2602282515787115150, guid: b9f31fba7d19380468a3e2eb4ca8a66e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2602282515787115150, guid: b9f31fba7d19380468a3e2eb4ca8a66e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2602282515787115150, guid: b9f31fba7d19380468a3e2eb4ca8a66e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3542819006807827628, guid: b9f31fba7d19380468a3e2eb4ca8a66e,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 2.2682495
+      objectReference: {fileID: 0}
+    - target: {fileID: 3542819006807827628, guid: b9f31fba7d19380468a3e2eb4ca8a66e,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 0.9236183
+      objectReference: {fileID: 0}
+    - target: {fileID: 3542819006807827628, guid: b9f31fba7d19380468a3e2eb4ca8a66e,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3542819006807827628, guid: b9f31fba7d19380468a3e2eb4ca8a66e,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4426800680159861050, guid: b9f31fba7d19380468a3e2eb4ca8a66e,
+        type: 3}
+      propertyPath: m_Name
+      value: BlueKeyCard
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531916714742623939, guid: b9f31fba7d19380468a3e2eb4ca8a66e,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 3.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531916714742623939, guid: b9f31fba7d19380468a3e2eb4ca8a66e,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531916714742623939, guid: b9f31fba7d19380468a3e2eb4ca8a66e,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 73042f483b7ef5e4d9268b16b5172d16,
+        type: 3}
+    - target: {fileID: 6531916714742623939, guid: b9f31fba7d19380468a3e2eb4ca8a66e,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b9f31fba7d19380468a3e2eb4ca8a66e, type: 3}
 --- !u!1001 &245129510
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14253,7 +14367,12 @@ PrefabInstance:
     - target: {fileID: 5677001541987375190, guid: a6bd62363ccb7e94fb4838ded549c2f9,
         type: 3}
       propertyPath: keyCards
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5677001541987375190, guid: a6bd62363ccb7e94fb4838ded549c2f9,
+        type: 3}
+      propertyPath: tapAction
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8356335425613493958, guid: a6bd62363ccb7e94fb4838ded549c2f9,
         type: 3}
@@ -14327,3 +14446,4 @@ SceneRoots:
   - {fileID: 574302439}
   - {fileID: 1977512909}
   - {fileID: 2013563258}
+  - {fileID: 239008699}

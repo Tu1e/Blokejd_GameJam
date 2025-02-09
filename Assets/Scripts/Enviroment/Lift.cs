@@ -12,17 +12,15 @@ public class Lift : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
 
         if(other.gameObject.CompareTag("Player")) {
-
-            //if(KeyCards.is(keyCards)
+            if(keyCards.IsNot(KeyCards.KeycardA | KeyCards.KeycardB | KeyCards.KeycardC)){
+                NextLvl();
+            }
         }
     }
 
-    void PlayLiftAnimation(){
-        animation.Play();
-    }
-
     void NextLvl(){
-
+        //Larp logic
+        Debug.Log("Next level");
     }
 
     
