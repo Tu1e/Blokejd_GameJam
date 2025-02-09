@@ -782,4 +782,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8dcfe4a57bfc8346b55aad86d85d53e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dieAnim: {fileID: -2695296313404128652, guid: 72cb0b97c8c314441a225ed18dec3748,
+    type: 3}
+  anim: {fileID: 2808383992290788087}
   currentCell: {fileID: 0}

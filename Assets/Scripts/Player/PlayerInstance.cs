@@ -5,13 +5,15 @@ using UnityEngine;
 public class PlayerInstance : MonoBehaviour
 {
     //[SerializeField] Animation moveAnim;
-    //[SerializeField] Animation dieAnim;
-    //[SerializeField] Animator anim;
+    [SerializeField] AnimationClip dieAnim;
+    [SerializeField] Animator anim;
 
     public Cell currentCell;
 
     public void HandlePlayerInstanceDeath(){
-        Destroy(this);
+        Destroy(anim);
+        //anim.Play(dieAnim);
+        
 
     }
 

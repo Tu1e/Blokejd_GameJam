@@ -18,7 +18,7 @@ public class PlayerManager : MonoBehaviour
     bool canMove = true;
 
     [SerializeField] List<Transform> startingPos;
-    Transform currentSpawnPos;
+    Vector3 currentSpawnPos = new Vector3(0,0,0);
 
     Animator animator;  
     GameObject player;
@@ -56,15 +56,19 @@ public class PlayerManager : MonoBehaviour
     }
     int b = 0;
     void SpawnPlayer(){
+        if (b >= startingPos.Count) {
+            Debug.LogError("Index 'b' is out of range! Check the startingPos list.");
+            return;
+        }
+
         currentMovesLeft = moves[b];
+        
         OnPlayerMoved?.Invoke(currentMovesLeft);
-        currentSpawnPos = startingPos[b];
-        player = Instantiate(playerPrefab, currentSpawnPos.position + new Vector3(0f, 1f, 0f), Quaternion.identity);
+        currentSpawnPos = startingPos[b].position;
+        Debug.Log($"After SpawnPlayer: currentSpawnPos = {currentSpawnPos}");
+        player = Instantiate(playerPrefab, currentSpawnPos + new Vector3(0f, 1f, 0f), Quaternion.identity);
         playerInstance = player.GetComponent<PlayerInstance>();
         animator = playerInstance.GetComponent<Animator>();
-         Debug.Log("Player died");
-        //rb = player.GetComponent<Rigidbody>();
-
     }
 
     void PlayerInput(){
@@ -83,28 +87,35 @@ public class PlayerManager : MonoBehaviour
         }
     }
     void HandlePlayerDeath(){
-        canMove = false;    
-        player.GetComponent<PlayerInstance>().HandlePlayerInstanceDeath();
-        SpawnPlayer();
-       
-        animator.SetBool("Dead", true);
+    canMove = false;    
+    playerInstance.HandlePlayerInstanceDeath();
+    animator.SetBool("Dead", true);
+    
+    // Ažuriraj `currentSpawnPos` pre nego što instanciraš novog igrača
+    currentSpawnPos = startingPos[b].position;  
+    Debug.Log($"Player Death - Updating currentSpawnPos to: {currentSpawnPos}");
+
+    // Uništi starog igrača
+    //Destroy(player,0.5f);
+    
+    // Sačekaj trenutak da se objekat uništi, pa instanciraj novog igrača
+    Invoke(nameof(SpawnPlayer), 0.1f); 
     }
 
     void HandleNewlevel(){
-        
+        Debug.Log("Id u kurac");
         Destroy(player,0.2f);
-        //tim
         b++;
         SpawnPlayer();
-        //startingPos = 
     }
 
     void UseMove(){
         --currentMovesLeft;
         OnPlayerMoved?.Invoke(currentMovesLeft);
         if(currentMovesLeft < 0){
-            HandlePlayerDeath();
             playerInstance.HandlePlayerInstanceDeath();
+            HandlePlayerDeath();
+            
         }
     }
     void Lerping(){

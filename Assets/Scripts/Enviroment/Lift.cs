@@ -10,7 +10,7 @@ public class Lift : MonoBehaviour
 
     [SerializeField] CameraPan camera;
     public static event Action OnLevelWon;
-
+    bool isUsed = false;
     
     private void OnEnable() {
         Key.OnKeyCardCollected += HandleKeyCollected;
@@ -22,9 +22,10 @@ public class Lift : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
 
-        if(other.gameObject.CompareTag("Player")) {
+        if(other.gameObject.CompareTag("Player") && !isUsed) {
             if(keyCards.IsNot(KeyCards.KeycardA | KeyCards.KeycardB | KeyCards.KeycardC)){
                 NextLvl();
+                isUsed = true;
             }
         }
     }
