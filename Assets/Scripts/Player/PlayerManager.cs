@@ -32,6 +32,7 @@ public class PlayerManager : MonoBehaviour
     private float currentLerp = 0, targetLerp = 1;
 
     public static event Action<int> OnPlayerMoved;
+    public static event Action OnLvlFinished;
     private void OnEnable() {
         Traps.KillPlayer += HandlePlayerDeath;
         Lift.OnLevelWon += HandleNewlevel;
@@ -104,6 +105,7 @@ public class PlayerManager : MonoBehaviour
 
     void HandleNewlevel(){
         KillPlayer();
+        OnLvlFinished?.Invoke();
         b++;
         SpawnPlayer();
     }
