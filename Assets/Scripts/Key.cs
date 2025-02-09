@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Key : MonoBehaviour
 {
-    [SerializeField] KeyCards keyCard;
+    [SerializeField] public KeyCards keyCard;
 
     public static event Action<KeyCards> OnKeyCardCollected;
 

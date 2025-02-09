@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1525525782268324690}
   - component: {fileID: 8923266607371545119}
   - component: {fileID: 8903742515730043327}
+  - component: {fileID: 6764188699887688306}
   m_Layer: 0
   m_Name: BlueKeyCard
   m_TagString: Untagged
@@ -148,3 +149,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyCard: 2
+--- !u!114 &6764188699887688306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2970066724795754229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13cb5606b5046d4409b9e805fd98c482, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  block: {fileID: 2970066724795754229}
+  blockPos: {fileID: 4765297635588149418}
+  lift: {fileID: 0}

@@ -34,6 +34,7 @@ public class PlayerManager : MonoBehaviour
     public static event Action<int> OnPlayerMoved;
     public static event Action OnPlayerMadeMove;
     public static event Action OnLvlFinished;
+    public static event Action OnPlayerDied;
     private void OnEnable() {
         Traps.KillPlayer += HandlePlayerDeath;
         Lift.OnLevelWon += HandleNewlevel;
@@ -91,6 +92,7 @@ public class PlayerManager : MonoBehaviour
     void HandlePlayerDeath(){
     canMove = false;    
     playerInstance.HandlePlayerInstanceDeath();
+    OnPlayerDied?.Invoke();
     animator.SetBool("Dead", true);
     
     // Ažuriraj `currentSpawnPos` pre nego što instanciraš novog igrača
