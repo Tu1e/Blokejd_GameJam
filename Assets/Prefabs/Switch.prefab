@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1216830981519378304}
   - component: {fileID: 824497215793927808}
   - component: {fileID: 629397506779549776}
+  - component: {fileID: 3612269314288113529}
   m_Layer: 0
   m_Name: Switch
   m_TagString: Box
@@ -121,3 +122,16 @@ MonoBehaviour:
   animation: {fileID: 0}
   tapAction: 0
   isOpen: 0
+--- !u!114 &3612269314288113529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 856793493526849109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1602a2b2c29ed57538e28a8701368cb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cellState: 0

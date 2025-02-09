@@ -12,6 +12,7 @@ public class Key : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if(other.gameObject.CompareTag("Player")){
             OnKeyCardCollected?.Invoke(keyCard);
+            Destroy(gameObject);
         }
     }
     

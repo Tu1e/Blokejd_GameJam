@@ -33,12 +33,11 @@ public class Lift : MonoBehaviour
     void NextLvl(){
         Debug.Log("Next level");
         OnLevelWon?.Invoke();
-
         camera.EndPos.y += 30f;
     }
 
     void HandleKeyCollected(KeyCards kCards){
-        keyCards.Without(kCards);
+        keyCards = keyCards.Without(kCards);
     }
     
 }

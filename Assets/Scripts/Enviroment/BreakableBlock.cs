@@ -7,6 +7,7 @@ public class BreakableBlock : Traps
     [SerializeField] Animator animator;
     [SerializeField] TrapActions tapAction;
     [SerializeField] bool isBroken;
+    [SerializeField] CellState state;
     private void OnTriggerEnter(Collider other) {
 
         if(other.gameObject.CompareTag("Player") && isBroken) {
@@ -25,6 +26,7 @@ public class BreakableBlock : Traps
             if(!isBroken){
                 animator.SetTrigger("SteppedOver");
                 isBroken = true;
+                state = 0;
             }
         }
 
