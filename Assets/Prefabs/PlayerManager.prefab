@@ -44,7 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22375e2ea1323084a89494f713c39bff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 32101926756909804, guid: fb7908c8d13f21c598c8890d21635878,
+  playerPrefab: {fileID: 374422734582512894, guid: 3629e3b245ecc1d4e867243b2e0a5b13,
     type: 3}
   speed: 5
-  startingPos: {fileID: 0}
+  moves: 0a0000000a0000000a000000
+  startingPos:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
