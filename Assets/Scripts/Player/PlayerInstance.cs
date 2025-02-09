@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerInstance : MonoBehaviour
@@ -11,9 +12,8 @@ public class PlayerInstance : MonoBehaviour
     public Cell currentCell;
 
     public void HandlePlayerInstanceDeath(){
-        Destroy(anim);
-        //anim.Play(dieAnim);
-        
+        anim.SetBool("Dead", true);
+        //Destroy(anim);
 
     }
 
