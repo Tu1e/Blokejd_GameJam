@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Animations;
+using System;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] GameObject playerPrefab;
     [SerializeField] float speed;
     [SerializeField] int[] moves;
-    int currentMoves;
+    int currentMovesLeft;
     bool canMove = true;
 
     [SerializeField] List<Transform> startingPos;
@@ -30,10 +31,10 @@ public class PlayerManager : MonoBehaviour
     
     private float currentLerp = 0, targetLerp = 1;
 
+    public static event Action<int> OnPlayerMoved;
     private void OnEnable() {
         Traps.KillPlayer += HandlePlayerDeath;
         Lift.OnLevelWon += HandleNewlevel;
-        //OnLevelLoaded += HandleNewlevel;
     }
 
     private void OnDisable() {
@@ -55,7 +56,8 @@ public class PlayerManager : MonoBehaviour
     }
     int b = 0;
     void SpawnPlayer(){
-        currentMoves = moves[b];
+        currentMovesLeft = moves[b];
+        OnPlayerMoved?.Invoke(currentMovesLeft);
         currentSpawnPos = startingPos[b];
         player = Instantiate(playerPrefab, currentSpawnPos.position + new Vector3(0f, 1f, 0f), Quaternion.identity);
         playerInstance = player.GetComponent<PlayerInstance>();
@@ -98,8 +100,10 @@ public class PlayerManager : MonoBehaviour
     }
 
     void UseMove(){
-        --currentMove;
-        if(currentMove < 0){
+        --currentMovesLeft;
+        OnPlayerMoved?.Invoke(currentMovesLeft);
+        if(currentMovesLeft < 0){
+            HandlePlayerDeath();
             playerInstance.HandlePlayerInstanceDeath();
         }
     }
