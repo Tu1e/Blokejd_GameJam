@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class SwitchBox : Traps
@@ -7,6 +8,8 @@ public class SwitchBox : Traps
     [SerializeField] Animator animator;
     [SerializeField] TrapActions tapAction;
     [SerializeField] bool isOpen;
+
+    private bool startingPos;
 
     void OnEnable(){
         PlayerManager.OnPlayerMadeMove += SwitchState;
@@ -18,6 +21,7 @@ public class SwitchBox : Traps
 
     private void Start() {
         animator.SetBool("IsOpen",isOpen);
+        startingPos = isOpen;
     }
         private void OnTriggerEnter(Collider other) {
 
@@ -25,7 +29,14 @@ public class SwitchBox : Traps
             ActivateTrap(tapAction);
         }
     
+
         
+        
+    }
+
+    public void Reset(){
+        if(startingPos != isOpen)
+            SwitchState();
     }
 
 void SwitchState(){
