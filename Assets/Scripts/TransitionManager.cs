@@ -7,11 +7,7 @@ public class TransitionManager : MonoBehaviour
     [SerializeField] Animator animator;
 
     private void OnEnable() {
-        PlayerManager.OnLvlFinished += StartTranition;
-    }
-
-    private void OnDisable() {
-        PlayerManager.OnLvlFinished -= StartTranition;
+        
     }
 
     void StartTranition(){
