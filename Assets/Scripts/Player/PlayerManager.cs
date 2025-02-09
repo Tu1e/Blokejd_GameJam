@@ -12,9 +12,12 @@ public class PlayerManager : MonoBehaviour
 
     [SerializeField] GameObject playerPrefab;
     [SerializeField] float speed;
+    [SerializeField] int[] moves;
+    int currentMoves;
     bool canMove = true;
 
-    [SerializeField] Transform startingPos;
+    [SerializeField] List<Transform> startingPos;
+    Transform currentSpawnPos;
 
     Animator animator;  
     GameObject player;
@@ -29,11 +32,13 @@ public class PlayerManager : MonoBehaviour
 
     private void OnEnable() {
         Traps.KillPlayer += HandlePlayerDeath;
+        Lift.OnLevelWon += HandleNewlevel;
         //OnLevelLoaded += HandleNewlevel;
     }
 
     private void OnDisable() {
         Traps.KillPlayer -= HandlePlayerDeath;
+        Lift.OnLevelWon -= HandleNewlevel;
     }
 
     private void Start() {
@@ -48,11 +53,14 @@ public class PlayerManager : MonoBehaviour
             Lerping();
         }
     }
-
+    int b = 0;
     void SpawnPlayer(){
-        player = Instantiate(playerPrefab, startingPos.position + new Vector3(0f, 1f, 0f), Quaternion.identity);
+        currentMoves = moves[b];
+        currentSpawnPos = startingPos[b];
+        player = Instantiate(playerPrefab, currentSpawnPos.position + new Vector3(0f, 1f, 0f), Quaternion.identity);
         playerInstance = player.GetComponent<PlayerInstance>();
         animator = playerInstance.GetComponent<Animator>();
+         Debug.Log("Player died");
         //rb = player.GetComponent<Rigidbody>();
 
     }
@@ -76,15 +84,25 @@ public class PlayerManager : MonoBehaviour
         canMove = false;    
         player.GetComponent<PlayerInstance>().HandlePlayerInstanceDeath();
         SpawnPlayer();
+       
+        animator.SetBool("Dead", true);
     }
 
     void HandleNewlevel(){
         
+        Destroy(player,0.2f);
         //tim
+        b++;
         SpawnPlayer();
         //startingPos = 
     }
 
+    void UseMove(){
+        --currentMove;
+        if(currentMove < 0){
+            playerInstance.HandlePlayerInstanceDeath();
+        }
+    }
     void Lerping(){
         if(player.transform.localPosition != desiredPosition){
             currentLerp = Mathf.MoveTowards(currentLerp, targetLerp, speed * Time.deltaTime);
@@ -107,19 +125,23 @@ public class PlayerManager : MonoBehaviour
             player.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
             animator.SetBool("Up", true);
             animator.SetBool("Idle", false);
+            UseMove();
         }else if(currentMove == PlayerMoves.Back && playerInstance.currentCell.cellState.Is(CellState.Back)){
             desiredPosition.z -= 2;
             player.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
             animator.SetBool("Down", true);
             animator.SetBool("Idle", false);
+            UseMove();
         }else if(currentMove == PlayerMoves.Left && playerInstance.currentCell.cellState.Is(CellState.Left)){
             desiredPosition.x -= 2;
             animator.SetBool("Right", true);
             animator.SetBool("Idle", false);
+            UseMove();
         }else if(currentMove == PlayerMoves.Right && playerInstance.currentCell.cellState.Is(CellState.Right)){
             desiredPosition.x += 2;
             animator.SetBool("Left", true);
             animator.SetBool("Idle", false);
+            UseMove();
         }
 
         currentMove = PlayerMoves.Nothing;

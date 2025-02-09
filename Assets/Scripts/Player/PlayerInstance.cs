@@ -11,17 +11,12 @@ public class PlayerInstance : MonoBehaviour
     public Cell currentCell;
 
     public void HandlePlayerInstanceDeath(){
+        Destroy(this);
 
-//        Destroy(gameObject, dieAnim.clip.length);
-  //      moveAnim.Play();
-    }
-    public void PlayMoveAnimation(){
-    //    moveAnim.Play();
     }
 
     private void OnTriggerEnter(Collider other){
         if(other.gameObject.CompareTag("Box")){
-            Debug.Log("desilo se");
             currentCell = other.GetComponent<Cell>();
         }
     }

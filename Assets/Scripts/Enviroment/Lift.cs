@@ -1,14 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Lift : MonoBehaviour
 {
-    [SerializeField] Animation animation;
     [SerializeField] TrapActions tapAction;
     [SerializeField] KeyCards keyCards;
 
     [SerializeField] CameraPan camera;
+    public static event Action OnLevelWon;
 
     
     private void OnEnable() {
@@ -29,9 +30,10 @@ public class Lift : MonoBehaviour
     }
 
     void NextLvl(){
-        //Larp logic
         Debug.Log("Next level");
-        camera.EndPos.y += 100f;
+        OnLevelWon?.Invoke();
+
+        camera.EndPos.y += 30f;
     }
 
     void HandleKeyCollected(KeyCards kCards){

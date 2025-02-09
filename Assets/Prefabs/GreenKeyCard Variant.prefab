@@ -69,6 +69,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7033458203046412508, guid: 70cfe7471ba4e904a9e6f8d4b0455843,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7052181749576383356, guid: 70cfe7471ba4e904a9e6f8d4b0455843,
         type: 3}
       propertyPath: keyCard

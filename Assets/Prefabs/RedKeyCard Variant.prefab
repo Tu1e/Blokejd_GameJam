@@ -114,6 +114,11 @@ PrefabInstance:
       propertyPath: keyCard
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8923266607371545119, guid: fb40d9ad58455784b9449cbc9e2bc142,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
