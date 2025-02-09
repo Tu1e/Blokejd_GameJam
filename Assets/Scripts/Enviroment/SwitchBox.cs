@@ -13,10 +13,12 @@ public class SwitchBox : Traps
 
     void OnEnable(){
         PlayerManager.OnPlayerMadeMove += SwitchState;
+        PlayerManager.OnPlayerDied += Reset;
     }
 
     void OnDisable(){
         PlayerManager.OnPlayerMadeMove -= SwitchState;
+        PlayerManager.OnPlayerDied -= Reset;
     }
 
     private void Start() {
