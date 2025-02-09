@@ -536,12 +536,12 @@ PrefabInstance:
     - target: {fileID: 2076435227093838084, guid: 55d0d9c7325039b4a867feaa1615e8bb,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 7.3
       objectReference: {fileID: 0}
     - target: {fileID: 2076435227093838084, guid: 55d0d9c7325039b4a867feaa1615e8bb,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.01
       objectReference: {fileID: 0}
     - target: {fileID: 2076435227093838084, guid: 55d0d9c7325039b4a867feaa1615e8bb,
         type: 3}
@@ -1169,6 +1169,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: kocka (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1676229250909546669, guid: 031cd536a32b16d4caf2ab31da1e91c8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2020138434544628247, guid: 031cd536a32b16d4caf2ab31da1e91c8,
         type: 3}
@@ -2354,7 +2359,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1807660991}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: fdd694988623b18498914dbd9093f680,
         type: 3}
@@ -2369,7 +2374,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: fdd694988623b18498914dbd9093f680,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1.9999999
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fdd694988623b18498914dbd9093f680,
         type: 3}
@@ -2409,7 +2414,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: fdd694988623b18498914dbd9093f680,
         type: 3}
       propertyPath: m_Name
-      value: cell distruct
+      value: Breakable_New
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2427,6 +2432,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1143015347}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fdd694988623b18498914dbd9093f680,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1143015351}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fdd694988623b18498914dbd9093f680,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1143015352}
   m_SourcePrefab: {fileID: 100100000, guid: fdd694988623b18498914dbd9093f680, type: 3}
 --- !u!1 &1143015346 stripped
 GameObject:
@@ -2467,7 +2480,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7ccfe5f2af636b4dbb751e7ae5985da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animation: {fileID: 0}
+  animator: {fileID: 1143015347}
   tapAction: 0
   isBroken: 0
 --- !u!65 &1143015349
@@ -2485,12 +2498,58 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 3.309929, z: 1}
+  m_Center: {x: 0, y: 1.1549644, z: 0}
+--- !u!4 &1143015350 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fdd694988623b18498914dbd9093f680,
+    type: 3}
+  m_PrefabInstance: {fileID: 1143015345}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1143015351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143015346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1602a2b2c29ed57538e28a8701368cb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cellState: 7
+--- !u!54 &1143015352
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143015346}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &1158370211
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4027,6 +4086,7 @@ RectTransform:
   - {fileID: 397974227}
   - {fileID: 1548099078}
   - {fileID: 1015191131}
+  - {fileID: 1143015350}
   m_Father: {fileID: 1977512909}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -4648,22 +4708,22 @@ PrefabInstance:
         type: 3}
       propertyPath: startingPos.Array.data[0]
       value: 
-      objectReference: {fileID: 561654524}
+      objectReference: {fileID: 1316187735}
     - target: {fileID: 4419984189998158932, guid: 8138a3b1183feaf4088368e1a00091f5,
         type: 3}
       propertyPath: startingPos.Array.data[1]
       value: 
-      objectReference: {fileID: 1486166173}
+      objectReference: {fileID: 561654524}
     - target: {fileID: 4419984189998158932, guid: 8138a3b1183feaf4088368e1a00091f5,
         type: 3}
       propertyPath: startingPos.Array.data[2]
       value: 
-      objectReference: {fileID: 844066412}
+      objectReference: {fileID: 1486166173}
     - target: {fileID: 4419984189998158932, guid: 8138a3b1183feaf4088368e1a00091f5,
         type: 3}
       propertyPath: startingPos.Array.data[3]
       value: 
-      objectReference: {fileID: 561654524}
+      objectReference: {fileID: 844066412}
     - target: {fileID: 6079071447292312266, guid: 8138a3b1183feaf4088368e1a00091f5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5456,6 +5516,5 @@ SceneRoots:
   - {fileID: 2731991365990431337}
   - {fileID: 2035529207929812197}
   - {fileID: 5019567418865321290}
-  - {fileID: 1143015345}
   - {fileID: 267687664}
   - {fileID: 8529380798602076091}

@@ -4,19 +4,32 @@ using UnityEngine;
 
 public class BreakableBlock : Traps
 {
-    [SerializeField] Animation animation;
+    [SerializeField] Animator animator;
     [SerializeField] TrapActions tapAction;
     [SerializeField] bool isBroken;
     private void OnTriggerEnter(Collider other) {
 
         if(other.gameObject.CompareTag("Player") && isBroken) {
-            Destroy(gameObject, animation.clip.length);
-            PlayAnimation(animation);
+            //Destroy(gameObject, animation.clip.length);
+            //PlayAnimation(animation);
+            
             ActivateTrap(tapAction);
         }
+            
+        
+    }
+    private void OnTriggerExit(Collider other) {
 
-        if(!isBroken)
-            isBroken = true;
+        if(other.gameObject.CompareTag("Player"))
+        {
+            if(!isBroken){
+                animator.SetTrigger("SteppedOver");
+                isBroken = true;
+            }
+        }
+
+        
+            
         
     }
 
