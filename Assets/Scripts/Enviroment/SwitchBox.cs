@@ -4,29 +4,34 @@ using UnityEngine;
 
 public class SwitchBox : Traps
 {
-    [SerializeField] Animation animation;
+    [SerializeField] Animator animator;
     [SerializeField] TrapActions tapAction;
     [SerializeField] bool isOpen;
 
     void OnEnable(){
-       // PlayerManager.OnPlayerMoved += SwitchState;
+        PlayerManager.OnPlayerMadeMove += SwitchState;
     }
 
     void OnDisable(){
-        //PlayerManager.OnPlayerMoved -= SwitchState;
+        PlayerManager.OnPlayerMadeMove -= SwitchState;
     }
-    private void OnTriggerEnter(Collider other) {
+
+    private void Start() {
+        animator.SetBool("IsOpen",isOpen);
+    }
+        private void OnTriggerEnter(Collider other) {
 
         if(other.gameObject.CompareTag("Player") && isOpen) {
-            Destroy(gameObject, animation.clip.length);
-            PlayAnimation(animation);
             ActivateTrap(tapAction);
         }
     
         
     }
 
-void SwitchState() => isOpen = !isOpen;
+void SwitchState(){
+    isOpen = !isOpen;
+    animator.SetBool("IsOpen",isOpen);
+}
 
 private void OnDrawGizmos() 
     {

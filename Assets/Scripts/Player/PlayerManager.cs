@@ -32,6 +32,7 @@ public class PlayerManager : MonoBehaviour
     private float currentLerp = 0, targetLerp = 1;
 
     public static event Action<int> OnPlayerMoved;
+    public static event Action OnPlayerMadeMove;
     public static event Action OnLvlFinished;
     private void OnEnable() {
         Traps.KillPlayer += HandlePlayerDeath;
@@ -113,6 +114,7 @@ public class PlayerManager : MonoBehaviour
     void UseMove(){
         --currentMovesLeft;
         OnPlayerMoved?.Invoke(currentMovesLeft);
+        OnPlayerMadeMove?.Invoke();
         if(currentMovesLeft < 0){
             
             KillPlayer();
