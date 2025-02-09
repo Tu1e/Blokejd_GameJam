@@ -8,7 +8,7 @@ public abstract class Traps : MonoBehaviour
     public static event Action KillPlayer;
     public static event Action SendSInfo;
     public void PlayAnimation(Animation anim){
-        anim.Play();
+        anim?.Play();
     } 
 
     public void ActivateTrap(TrapActions tActions){

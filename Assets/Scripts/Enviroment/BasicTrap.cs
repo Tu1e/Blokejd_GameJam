@@ -9,7 +9,7 @@ public class BasicTrap : Traps
     private void OnTriggerEnter(Collider other) {
 
         if(other.gameObject.CompareTag("Player")) {
-            PlayAnimation(animation);
+            //PlayAnimation(animation);
             ActivateTrap(tapAction);
         }
     

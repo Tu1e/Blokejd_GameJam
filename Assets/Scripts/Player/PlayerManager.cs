@@ -103,8 +103,7 @@ public class PlayerManager : MonoBehaviour
     }
 
     void HandleNewlevel(){
-        Debug.Log("Id u kurac");
-        Destroy(player,0.2f);
+        KillPlayer();
         b++;
         SpawnPlayer();
     }
@@ -113,10 +112,15 @@ public class PlayerManager : MonoBehaviour
         --currentMovesLeft;
         OnPlayerMoved?.Invoke(currentMovesLeft);
         if(currentMovesLeft < 0){
+            
+            KillPlayer();
+        }
+    }
+    void KillPlayer(){
+        desiredPosition = player.transform.localPosition;
             playerInstance.HandlePlayerInstanceDeath();
             HandlePlayerDeath();
-            
-        }
+
     }
     void Lerping(){
         if(player.transform.localPosition != desiredPosition){
