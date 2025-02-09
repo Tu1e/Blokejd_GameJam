@@ -13,7 +13,7 @@ public class BasicTrap : Traps
         if(other.gameObject.CompareTag("Player")) {
             //PlayAnimation(animation);
             ActivateTrap(tapAction);
-            if(isBanana) {
+            if(!isBanana) {
                 Instantiate(banana, transform.position + new Vector3(0,1.5f,0), Quaternion.identity);
                 isBanana = true;
             }

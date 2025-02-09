@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
 
 public class BreakableBlock : Traps
@@ -8,6 +9,10 @@ public class BreakableBlock : Traps
     [SerializeField] TrapActions tapAction;
     [SerializeField] bool isBroken;
     [SerializeField] CellState state;
+
+    void Start(){
+        Debug.Log("Evo me", this);
+    }
     private void OnTriggerEnter(Collider other) {
 
         if(other.gameObject.CompareTag("Player") && isBroken) {

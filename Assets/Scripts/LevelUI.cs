@@ -22,7 +22,7 @@ public class LevelUI : MonoBehaviour
             movesLeft.text = "No moves left!";
             return;
         }
-        movesLeft.color = Color.black;
+        movesLeft.color = Color.white;
         movesLeft.text = "Moves left: " + mLeft;
     }
 }
