@@ -12,7 +12,7 @@ public class PlayerInstance : MonoBehaviour
     public Cell currentCell;
 
     public void HandlePlayerInstanceDeath(){
-        anim.SetBool("Dead", true);
+        //anim.SetBool("Dead", true);
         //Destroy(anim);
 
     }

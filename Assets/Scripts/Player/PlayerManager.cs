@@ -107,11 +107,14 @@ public class PlayerManager : MonoBehaviour
     void HandleNewlevel(){
         currentPosition = player.transform.localPosition;
         desiredPosition.y += 30f;
-        KillPlayer();
+        desiredPosition = player.transform.localPosition;
         OnLvlFinished?.Invoke();
         b++;
-        SpawnPlayer();
+        canMove = false;    
+        currentSpawnPos = startingPos[b].position;  
+        Invoke(nameof(SpawnPlayer), 0.1f);
     }
+
 
     void UseMove(){
         --currentMovesLeft;
