@@ -1,7 +1,7 @@
 [System.Flags]
 public enum CellState{
     Forward = 1, Back = 1 << 1, Left = 1 << 2, Right = 1 << 3, 
-    Trap = 1 << 4, Breakable = 1 << 5
+    Trap = 1 << 4, Breakable = 1 << 5, Win = 1 << 6
 }
 
 public static class CellStateExtensionMethods{

@@ -8,9 +8,17 @@ public class Lift : MonoBehaviour
     [SerializeField] TrapActions tapAction;
     [SerializeField] KeyCards keyCards;
 
+    [SerializeField] CameraPan camera;
+
+    
     private void OnEnable() {
         Key.OnKeyCardCollected += HandleKeyCollected;
     }
+
+    private void OnDisable(){
+        Key.OnKeyCardCollected -= HandleKeyCollected;
+    }
+
     private void OnTriggerEnter(Collider other) {
 
         if(other.gameObject.CompareTag("Player")) {
@@ -23,10 +31,11 @@ public class Lift : MonoBehaviour
     void NextLvl(){
         //Larp logic
         Debug.Log("Next level");
+        camera.EndPos.y += 100f;
     }
 
-    void HandleKeyCollected(KeyCards keyCards){
-        
+    void HandleKeyCollected(KeyCards kCards){
+        keyCards.Without(kCards);
     }
     
 }
