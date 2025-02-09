@@ -214,3 +214,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 732661cdb74a9f94a9692d116278144c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animation: {fileID: 0}
+  tapAction: 2
+  keyCards: 0

@@ -8,7 +8,9 @@ public class Lift : MonoBehaviour
     [SerializeField] TrapActions tapAction;
     [SerializeField] KeyCards keyCards;
 
-
+    private void OnEnable() {
+        Key.OnKeyCardCollected += HandleKeyCollected;
+    }
     private void OnTriggerEnter(Collider other) {
 
         if(other.gameObject.CompareTag("Player")) {
@@ -23,6 +25,9 @@ public class Lift : MonoBehaviour
         Debug.Log("Next level");
     }
 
+    void HandleKeyCollected(KeyCards keyCards){
+        
+    }
     
 }
 
