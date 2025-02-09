@@ -26,6 +26,10 @@ public class CameraPan : MonoBehaviour
             current = Mathf.MoveTowards(current, target, speed * Time.deltaTime);
 
             transform.position = Vector3.Lerp(StartPos, EndPos, curve.Evaluate(current));
-        }                
+            if(current == 1){
+                StartPos = EndPos;
+                current = 0;
+            }
+        }
     }
 }

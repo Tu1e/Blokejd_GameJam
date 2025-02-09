@@ -105,6 +105,8 @@ public class PlayerManager : MonoBehaviour
     }
 
     void HandleNewlevel(){
+        currentPosition = player.transform.localPosition;
+        desiredPosition.y += 30f;
         KillPlayer();
         OnLvlFinished?.Invoke();
         b++;
