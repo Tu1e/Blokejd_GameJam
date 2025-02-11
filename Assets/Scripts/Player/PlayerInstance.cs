@@ -11,15 +11,27 @@ public class PlayerInstance : MonoBehaviour
 
     public Cell currentCell;
 
-    public void HandlePlayerInstanceDeath(){
-        //anim.SetBool("Dead", true);
-        //Destroy(anim);
+    void OnEnable(){
+        Lift.DisableEntities += OnLevelFinished;
+    } 
 
+    void OnDisable(){
+         Lift.DisableEntities -= OnLevelFinished;
+    }
+
+    public void HandlePlayerInstanceDeath(){
+        tag = "Corpse";
     }
 
     private void OnTriggerEnter(Collider other){
         if(other.gameObject.CompareTag("Box")){
             currentCell = other.GetComponent<Cell>();
+        }
+    }
+
+    private void OnLevelFinished(){
+        if(tag == "Corpse"){
+            gameObject.SetActive(false);
         }
     }
     

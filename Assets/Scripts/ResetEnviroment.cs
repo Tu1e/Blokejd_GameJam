@@ -23,6 +23,6 @@ public class ResetEnviroment : MonoBehaviour
     }
 
     void Reset(){
-        Instantiate(block, blockPos, Quaternion.identity);
+        Instantiate(block, blockPos, new Quaternion(-90, 0, 0,0));
     }
 }

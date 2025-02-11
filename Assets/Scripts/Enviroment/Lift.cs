@@ -7,9 +7,11 @@ public class Lift : MonoBehaviour
 {
     [SerializeField] TrapActions tapAction;
     [SerializeField] KeyCards keyCards;
+    [SerializeField] GameObject level;
 
     [SerializeField] CameraPan camera;
     public static event Action OnLevelWon;
+    public static event Action DisableEntities;
     bool isUsed = false;
     
     private void OnEnable() {
@@ -34,6 +36,13 @@ public class Lift : MonoBehaviour
         Debug.Log("Next level");
         OnLevelWon?.Invoke();
         camera.EndPos.y += 30f;
+        StartCoroutine(DisableLevel());
+    }
+
+    IEnumerator DisableLevel(){
+        yield return new WaitForSeconds(3f);
+        DisableEntities?.Invoke();
+        level.SetActive(false);
     }
 
     void HandleKeyCollected(KeyCards kCards){
